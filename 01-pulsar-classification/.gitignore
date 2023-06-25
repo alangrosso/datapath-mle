@@ -1,0 +1,9 @@
+/.ipynb_checkpoints
+
+/data
+
+/utils/__pycache__
+
+*.html
+
+# /myenv
