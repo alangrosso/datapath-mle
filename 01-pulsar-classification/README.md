@@ -1,8 +1,8 @@
-# Pulsar Classification For Class Prediction
+# **Pulsar Classification For Class Prediction**
 
 https://www.kaggle.com/datasets/brsdincer/pulsar-classification-for-class-prediction
 
-## Ambiente Virtual
+## **Ambiente Virtual**
 
 Crear ambiente virtual para desarrollo de proyecto ML.
 Crear archivo `conda.yaml` con las librerias necesirias para desarrollar el proyecto.
@@ -21,7 +21,7 @@ Remover entorno
 
     conda env remove --name datapath_py01 --all
 
-## Datos
+## **Datos**
 
 Descargar datos
 
@@ -29,35 +29,60 @@ Descargar datos
     cd data
     kaggle datasets download -d brsdincer/pulsar-classification-for-class-prediction
 
-## EDA
+## **EDA**
 
 Realizar análisis exploratorio de variables, limpieza de datos, feature engineering, feature selection.
 
     my_notebook.ipynb
 
-## Entrenamiento del modelo
+## **Entrenamiento del modelo**
 
 Realizar el entrenamiento del modelo ML: train, test, validación.
 
     my_notebook.ipynb
 
-Se genera un archivo `main.py` que genere solo la predicción.
+Se genera un archivo que genere solo la predicción.
 
-## Deploy
+    main.py
+
+## **Deploy**
 
 Generar los archivos que garanticen la reproducibilidad del modelo y su puesta en producción:
 
-conda.yaml
-requirements.txt
-Dockerfile
+    conda.yaml (conda)
+    requirements.txt (en virtualenv)
+    Dockerfile
 
-## Github
+## **Github**
 
 Ir generando los commits para evidenciar los avances del proyecto
 
-    git commit
+    Crear repo
 
-Los archivos del proyecto se encuentran en:
+    git init
+    git pull
+
+    git branch dev
+    git checkout dev
+
+    git add .
+    git commit -m "proceso de machine learning"
+    git push origin dev
+
+    git add .
+    git commit -m "archivo main.py"
+    git push origin dev
+
+    git add .
+    git commit -m "archivo Dockerfile"
+    git push origin dev
+
+Merge con rama master
+
+    git checkout master
+    git merge dev -m "merge dev sin conflictos"
+
+Link del repo:
 
     https://github.com/alangrosso/datapath-mle/tree/main/proyecto01
 
