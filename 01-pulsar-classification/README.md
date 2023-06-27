@@ -99,7 +99,7 @@ Generar los commits para evidenciar los avances del proyecto:
 
 Merge con rama master:
 
-    git checkout master
+    git checkout main
     git merge dev -m "merge dev sin conflictos"
 
 Link del repo:
