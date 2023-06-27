@@ -97,7 +97,7 @@ Generar los commits para evidenciar los avances del proyecto:
     git commit -m "archivo Dockerfile"
     git push origin dev
 
-Merge con rama master:
+Merge con rama main:
 
     git checkout main
     git merge dev -m "merge dev sin conflictos"
