@@ -1,0 +1,13 @@
+/.ipynb_checkpoints
+
+/data
+
+/utils/__pycache__
+
+*.html
+
+notas.txt
+
+# conda.yaml
+
+# /myenv

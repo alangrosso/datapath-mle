@@ -1,0 +1,14 @@
+name: datapath_py01
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pip
+  - pandas=1.4.4
+  - numpy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyter
+  - ipython
+  - ydata-profiling
