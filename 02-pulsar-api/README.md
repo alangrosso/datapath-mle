@@ -47,26 +47,6 @@ Files necesarios para la api:
 │   └── routes.py
 ```
 
-├── README.md
-├── artifacts
-│   ├── model.joblib
-│   └── scaler.joblib
-├── conda.yaml
-├── controllers
-│   └── ml_controller.py
-├── images
-│   ├── 01_post.PNG
-│   ├── 02_get.PNG
-│   ├── 03_put.PNG
-│   └── 04_delete.PNG
-├── main.py
-├── models
-│   └── models.py
-├── my_notebook.ipynb
-├── routers
-│   └── routes.py
-
-
 ## **Probar API**
 
 Generar los archivos que garanticen la reproducibilidad del modelo y su puesta en producción:
@@ -74,9 +54,13 @@ Generar los archivos que garanticen la reproducibilidad del modelo y su puesta e
     environment.yaml (conda env export > environment.yml)
     requirements.txt (pip list --format=freeze > requirements.txt, conda list -e > requirements.txt)
     
-Ejecutar servidor para probar API:
+Ejecutar servidor:
 
     uvicorn main:app --reload
+
+Probar métodos:
+
+    ![](https://github.com/alangrosso/datapath-mle/blob/dev/02-pulsar-api/images/01_post.PNG){width='50px'}
 
 ## **Github**
 
