@@ -104,5 +104,5 @@ Merge con rama main:
 
 Link del repo:
 
-    https://github.com/alangrosso/datapath-mle/tree/main/proyecto01
+    https://github.com/alangrosso/datapath-mle/tree/main/01-pulsar-classification
 
