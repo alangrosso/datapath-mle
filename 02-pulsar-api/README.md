@@ -26,33 +26,45 @@ Remover entorno:
 
 Files necesarios para la api:
 
-    main.py
-    models.py
-    
-```bash
-
+```
+├── README.md
+├── artifacts
+│   ├── model.joblib
+│   └── scaler.joblib
+├── conda.yaml
+├── controllers
+│   └── ml_controller.py
+├── images
+│   ├── 01_post.PNG
+│   ├── 02_get.PNG
+│   ├── 03_put.PNG
+│   └── 04_delete.PNG
+├── main.py
+├── models
+│   └── models.py
+├── my_notebook.ipynb
+├── routers
+│   └── routes.py
 ```
 
-
-
-
-
-
-Obtener la predicción por línea de comandos:
-
-    python main.py 0.7439 0.6277 0.2066 0.0264 0.1152 0.4540
-
-Resultado:
-
-    Mean_Integrated = 0.7439
-    SD = 0.6277
-    EK = 0.2066
-    Mean_DMSNR_Curve = 0.0264
-    SD_DMSNR_Curve = 0.1152
-    EK_DMSNR_Curve = 0.4540
-    Prediction: 0.013
-
-
+├── README.md
+├── artifacts
+│   ├── model.joblib
+│   └── scaler.joblib
+├── conda.yaml
+├── controllers
+│   └── ml_controller.py
+├── images
+│   ├── 01_post.PNG
+│   ├── 02_get.PNG
+│   ├── 03_put.PNG
+│   └── 04_delete.PNG
+├── main.py
+├── models
+│   └── models.py
+├── my_notebook.ipynb
+├── routers
+│   └── routes.py
 
 
 ## **Probar API**
@@ -61,12 +73,10 @@ Generar los archivos que garanticen la reproducibilidad del modelo y su puesta e
 
     environment.yaml (conda env export > environment.yml)
     requirements.txt (pip list --format=freeze > requirements.txt, conda list -e > requirements.txt)
-    Dockerfile
+    
+Ejecutar servidor para probar API:
 
-Generar la imagen de Docker:
-
-    docker build -t pulsar_image .
-    docker run pulsar_image 0.7439 0.6277 0.2066 0.0264 0.1152 0.4540
+    uvicorn main:app --reload
 
 ## **Github**
 
@@ -81,15 +91,7 @@ Generar los commits para evidenciar los avances del proyecto:
     git checkout dev
 
     git add .
-    git commit -m "proceso de machine learning"
-    git push origin dev
-
-    git add .
-    git commit -m "archivo main.py"
-    git push origin dev
-
-    git add .
-    git commit -m "archivo Dockerfile"
+    git commit -m "primera commit api para modelo ml"
     git push origin dev
 
 Merge con rama main:
@@ -99,5 +101,5 @@ Merge con rama main:
 
 Link del repo:
 
-    https://github.com/alangrosso/datapath-mle/tree/main/proyecto01
+    https://github.com/alangrosso/datapath-mle/tree/main/02-pulsar-api
 
