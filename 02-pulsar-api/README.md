@@ -22,9 +22,9 @@ Remover entorno:
 
     conda env remove --name datapath_py02 --all
 
-## **Files**
+## **Estructura del proyecto**
 
-Files necesarios para la api:
+Files necesarios:
 
 ```
 ├── README.md
@@ -47,20 +47,20 @@ Files necesarios para la api:
 │   └── routes.py
 ```
 
-## **Probar API**
+## **Requirements**
 
 Generar los archivos que garanticen la reproducibilidad del modelo y su puesta en producción:
 
     environment.yaml (conda env export > environment.yml)
     requirements.txt (pip list --format=freeze > requirements.txt, conda list -e > requirements.txt)
-    
+
+## **Probar API**
+
 Ejecutar servidor:
 
     uvicorn main:app --reload
 
-Probar métodos:
-
-    ![](https://github.com/alangrosso/datapath-mle/blob/dev/02-pulsar-api/images/01_post.PNG){width='50px'}
+Verificar métodos en directorio `images`.
 
 ## **Github**
 
@@ -86,4 +86,4 @@ Merge con rama main:
 Link del repo:
 
     https://github.com/alangrosso/datapath-mle/tree/main/02-pulsar-api
-
+    
