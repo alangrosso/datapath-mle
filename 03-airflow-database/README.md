@@ -73,9 +73,9 @@ Verificar que las tareas planificadas se hayan ejecutado adecuadamente:
 
 Verificar métodos en directorio `images`.
 
-    ![](\\wsl.localhost\Ubuntu-20.04\home\agr\Datapath\datapath-mle\03-airflow-database\images\01_dag.PNG)
+    ![](https://github.com/alangrosso/datapath-mle/blob/dev/03-airflow-database/images/01_dag.PNG)
 
-    ![](\\wsl.localhost\Ubuntu-20.04\home\agr\Datapath\datapath-mle\03-airflow-database\images\02_output.PNG) 
+    ![](https://github.com/alangrosso/datapath-mle/blob/dev/03-airflow-database/images/02_output.PNG) 
 
 ## **Github**
 
