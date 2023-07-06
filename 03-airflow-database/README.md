@@ -20,7 +20,7 @@ Ubicarse en la rama de desarrollo y crear directorio de trabajo:
 
 Variables de entorno:
 
-    .env
+    cp .env.local .env
 
 Crear ambiente virtual e instalar librerias:
 
@@ -73,7 +73,7 @@ Verificar que las tareas planificadas se hayan ejecutado adecuadamente: `images`
 
 ![](https://github.com/alangrosso/datapath-mle/blob/dev/03-airflow-database/images/01_dag.PNG)
 
-![](https://github.com/alangrosso/datapath-mle/blob/1309e6e0fc6dbfd7b938d5656c08126081fdaf81/03-airflow-database/images/02_output.PNG) 
+![](https://github.com/alangrosso/datapath-mle/blob/dev/03-airflow-database/images/02_output.PNG) 
 
 ## **Github**
 
