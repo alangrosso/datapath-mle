@@ -71,7 +71,7 @@ Link Airflow:
 
 Verificar que las tareas planificadas se hayan ejecutado adecuadamente: `images`.
 
-![](https://github.com/alangrosso/datapath-mle/blob/dev/03-airflow-database/images/01_dag.PNG | width=100 height=200)
+![](https://github.com/alangrosso/datapath-mle/blob/1309e6e0fc6dbfd7b938d5656c08126081fdaf81/03-airflow-database/images/01_dag.PNG | width=100 height=200)
 
 ![](https://github.com/alangrosso/datapath-mle/blob/dev/03-airflow-database/images/02_output.PNG | width=100 height=200) 
 
