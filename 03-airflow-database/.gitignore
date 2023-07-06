@@ -1,0 +1,8 @@
+.env
+# .env.local
+
+/py_env
+
+/databases/postgresql_container
+
+
