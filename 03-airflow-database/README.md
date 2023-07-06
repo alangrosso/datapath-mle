@@ -69,13 +69,11 @@ Link Airflow:
 
 ## **Resultados**
 
-Verificar que las tareas planificadas se hayan ejecutado adecuadamente:
+Verificar que las tareas planificadas se hayan ejecutado adecuadamente: `images`.
 
-Verificar métodos en directorio `images`.
+    ![](https://github.com/alangrosso/datapath-mle/blob/1309e6e0fc6dbfd7b938d5656c08126081fdaf81/03-airflow-database/images/01_dag.PNG)
 
-    ![](https://github.com/alangrosso/datapath-mle/blob/dev/03-airflow-database/images/01_dag.PNG)
-
-    ![](https://github.com/alangrosso/datapath-mle/blob/dev/03-airflow-database/images/02_output.PNG) 
+    ![](https://github.com/alangrosso/datapath-mle/blob/1309e6e0fc6dbfd7b938d5656c08126081fdaf81/03-airflow-database/images/02_output.PNG) 
 
 ## **Github**
 
