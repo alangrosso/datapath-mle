@@ -1,12 +1,13 @@
-# datapath-mle
+# **Datapath**
 
-Datapath: Bootcamp Machine Learning Engineer
+**Bootcamp Machine Learning Engineer**
 
 Temas:
 
-    Curso 1: Introducción a ML Engineering
-    Curso 2: Programación en Phyton
-    Curso 3: Airflow for ML Engineers
-    Curso 4: ML FLOW for ML Engineers
-    Curso 5: Proyecto end to end (Batch y Realtime)
-    Curso 6: Empleabilidad for ML Engineers 
+    1. Introducción a ML Engineering.
+    2. Programación en Python.
+    3. Despliegue API con Python.
+    4. Airflow for ML Engineers.
+    5. ML FLOW for ML Engineers.
+    6. Proyecto end to end (Batch y Realtime).
+    7. Empleabilidad for ML Engineers. 
