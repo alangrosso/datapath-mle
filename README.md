@@ -1,8 +1,6 @@
-# **Datapath**
+# **Bootcamp Machine Learning Engineer**
 
-**Bootcamp Machine Learning Engineer**
-
-Temas:
+**Datapath**
 
     1. Introducción a ML Engineering.
     2. Programación en Python.
