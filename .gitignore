@@ -160,3 +160,6 @@ cython_debug/
 #.idea/
 
 github_token.txt
+
+mlartifacts/
+mlruns/

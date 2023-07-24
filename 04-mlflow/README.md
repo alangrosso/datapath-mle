@@ -46,42 +46,43 @@ Realizar el entrenamiento del modelo ML: train, test, validación.
 
 Visualizar resultados en interfaz de MLflow:
 
-    ```ssh
-    mlflow ui
-    ```
+```ssh
+mlflow ui
+```
 
-    ![](images/models.PNG)
+![](images/models.PNG)
 
-    ![](images/best_model.PNG)
+![](images/best_model.PNG)
 
 ## **Deploy**
 
 Verificar que el mejor modelo se haya asignado a producción:
 
-    ![](images/register_model.PNG)
+![](images/register_model.PNG)
 
 ## **Github**
 
 Generar los commits para evidenciar los avances del proyecto:
 
-    ```
-    git init
-    git pull
+```ssh
+git init
+git pull
 
-    git branch dev
-    git checkout dev
+git branch dev
+git checkout dev
 
-    git add .
-    git commit -m "registro del modelo y probar predictions"
-    git push origin dev
-    ```
+git add .
+git commit -m "registro del modelo y probar predictions"
+git push origin dev
+```
 
 Merge con rama main:
 
-    ```
-    git checkout main
-    git merge dev -m "merge dev sin conflictos"
-    ```
+```ssh
+
+git checkout main
+git merge dev -m "merge dev sin conflictos"
+```
 
 Link del repo:
 
