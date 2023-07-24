@@ -26,9 +26,11 @@ Remover entorno:
 
 Descargar datos:
 
-    mkdir data && cd data
-    kaggle datasets download -d kabure/german-credit-data-with-risk
-    unzip german-credit-data-with-risk.zip
+```ssh
+mkdir data && cd data
+kaggle datasets download -d kabure/german-credit-data-with-risk
+unzip german-credit-data-with-risk.zip
+```
 
 ## **EDA**
 
@@ -79,11 +81,10 @@ git push origin dev
 Merge con rama main:
 
 ```ssh
-
 git checkout main
 git merge dev -m "merge dev sin conflictos"
 ```
 
 Link del repo:
 
-    https://github.com/alangrosso/datapath-mle/tree/main/04-mlflow
+https://github.com/alangrosso/datapath-mle/tree/main/04-mlflow
