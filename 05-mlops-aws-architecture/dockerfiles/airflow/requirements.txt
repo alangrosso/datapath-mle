@@ -1,0 +1,7 @@
+mlflow==2.2.0
+dvc
+xgboost
+imblearn
+feature-engine
+loguru
+pytz

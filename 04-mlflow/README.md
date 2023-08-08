@@ -42,7 +42,7 @@ Realizar análisis exploratorio de variables, limpieza de datos, feature enginee
 
 Realizar el entrenamiento del modelo ML: train, test, validación.
 
-    my_notebook.ipynb
+    mlf_notebook.ipynb
 
 ## **MLflow UI**
 
