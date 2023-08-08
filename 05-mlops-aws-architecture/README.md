@@ -235,7 +235,7 @@ mlflow sagemaker build-and-push-container --no-build -c $IMAGE_NAME
 aws ecr list-images --repository-name NOMBRE_IMAGEN
 ```
 
-![](images/ecr_1.png.PNG)
+![](images/ecr_1.PNG)
 
 - Realizar el despliegue en SageMaker:
 
@@ -254,9 +254,9 @@ aws sagemaker list-models
 aws sagemaker list-endpoints
 ```
 
-![](images/sagemaker_1_model.png.PNG)
+![](images/sagemaker_1_model.PNG)
 
-![](images/sagemaker_2_endpoint.png.PNG)
+![](images/sagemaker_2_endpoint.PNG)
 
 - Obtener las predicciones:
 
