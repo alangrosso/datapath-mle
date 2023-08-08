@@ -40,7 +40,7 @@ Instalar las librerias necesarias para el desarrollo del proyecto, que se encuen
 ```commandline
 pip install -r requirements.txt
 
-# Configurar kernel
+# Kernel
 ipython kernel install --user --name=mlops-aws-env
 ```
 
@@ -66,7 +66,7 @@ Actualizar las siguientes variables:
    - AWS_REGION
    - AWS_BUCKET_NAME
 
-Verificar configuración:
+Obtener datos de configuración en AWS:
 
 ```commandline
 aws configure
@@ -79,7 +79,7 @@ Generar las políticas y roles para el usuario en AWS y poder utilizar los sigui
 
 Crear bucket en S3 (de acuerdo a nombre considerado en `.env`).
 
-Algunos comandos de AWS Cli para verificar la configuración y servicios activos:
+Algunos comandos de AWS Cli para revisar la configuración y servicios activos:
 
 ```commandline
 # Usuarios
@@ -109,7 +109,7 @@ aws sagemaker list-artifacts
 
 ## **Contenedores**
 
-Ejecutar los contenedores que contienen la configuración de cada proceso del pipeline:
+Ejecutar los Dockerfile que contienen la configuración de cada proceso del pipeline:
 
 ```commandline
 cd dockerfiles
@@ -129,7 +129,7 @@ cd ../..
 docker-compose up --build -d
 ```
 
-Verificar los servicios creados:
+Visualizar recursos creados:
 
 ```commandline
 # Contenedores:
@@ -178,7 +178,7 @@ Ejecutar el DAG de Airflow que realiza el proceso de entrenamiento de los modelo
 
 ## **MLflow UI**
 
-Visualizar resultados en interfaz de MLflow.
+Resultados en interfaz de MLflow.
 
 ![](images/mlflow_1_panel.PNG)
 
@@ -206,7 +206,7 @@ python3 predict_local.py
 
 ### Cloud
 
-- En MLflow y AWS identificar el artefacto en producción y generamos las variables necesarias para el despliegue del modelo.
+- En MLflow y AWS identificar el artefacto en producción y generar las variables para el despliegue del modelo.
 
 ```commandline
 export MLFLOW_TRACKING_URI=http://localhost:5000
@@ -221,11 +221,8 @@ AWS_BUCKET_NAME=""
 
 ```commandline
 mlflow models build-docker --name $IMAGE_NAME --model-uri s3://$AWS_BUCKET_NAME/$EXP_ID/$RUN_ID/artifacts/$MODEL_NAME --env-manager conda
-```
 
-Verificar la imagen creada:
-
-```commandline
+# Verificar la imagen creada:
 docker images
 ```
 
@@ -233,12 +230,8 @@ docker images
 
 ```commandline
 mlflow sagemaker build-and-push-container --no-build -c $IMAGE_NAME
-```
 
-Verificar los servicios creados:
-
-```commandline
-# Imagen
+# Verificar los servicios creados:
 aws ecr list-images --repository-name NOMBRE_IMAGEN
 ```
 
@@ -275,5 +268,26 @@ python3 predict.py
 ![](images/predictions.PNG)
 
 ## **Github**
+
+Generar los commits del avance del proyecto:
+
+```commandline
+git init
+git pull
+
+git branch dev
+git checkout dev
+
+git add .
+git commit -m "agregando proyecto 05"
+git push origin dev
+```
+
+Merge con rama main:
+
+```commandline
+git checkout main
+git merge dev -m "merge dev sin conflictos"
+```
 
 Link del <a href="https://github.com/alangrosso/datapath-mle/tree/main/05-mlops-aws-architecture" target="_blank">repo<a/>.
