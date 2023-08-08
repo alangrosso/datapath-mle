@@ -194,13 +194,13 @@ def get_model(model_name='logistic_regression'):
 
     model = None
     if model_name == 'logistic_regression':
-        C = 0.7
-        iterations = 200
+        C = 0.6
+        iterations = 400
         model = LogisticRegression(C=C, max_iter=iterations)
     if model_name == 'XGB':
-        learning_rate = 0.05
+        learning_rate = 0.01
         max_depth = 5
-        n_estimators = 200
+        n_estimators = 150
         model = XGBClassifier(learning_rate=learning_rate, max_depth=max_depth, n_estimators=n_estimators)
 
     return model

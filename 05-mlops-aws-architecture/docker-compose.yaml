@@ -52,7 +52,7 @@ x-airflow-common:
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
   # image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.6.2} # Opción 1: imagen pública
-  image: mlops-airflow:latest # Opción 2: imagen local que he desplegado de Docker local
+  image: mlops-airflow:latest # Opción 2: imagen local que he de Dockerfile local
   # build: ./dockerfiles/airflow # Opción 3: contruye imagen a partir de file local
   environment:
     &airflow-common-env
@@ -83,6 +83,7 @@ x-airflow-common:
 
     ## Conexión mlflow
     MLFLOW_TRACKING_URI: "http://mlflow:5000"
+    
     ## Conexión AWS
     AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
     AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
@@ -127,7 +128,7 @@ services:
   mlflow:
     # build: ./dockerfiles/mlflow
     # image: mlflow_server
-    image: mlops-mlflow:latest
+    image: mlops-mlflow:latest # imagen creada previamente con Dockerfile
     ports:
       - "5000:5000"
     environment:
@@ -147,8 +148,8 @@ services:
 # This container runs the jupyter lab.
 ########################################################################################################
   jupyter:
-    image: mlops-jupyter:latest
-    # docker-compose build beeore you can use the image in docker-compose up again.
+    image: mlops-jupyter:latest # imagen creada previamente con Dockerfile
+    # docker-compose build before you can use the image in docker-compose up again.
     # build: ./dockerfiles/jupyter
     ports:
       - ${JUPYTER_PORT}:${JUPYTER_PORT}
@@ -173,7 +174,6 @@ services:
       - ./:/mlops
 
     entrypoint: sh -c 'jupyter lab --ip=0.0.0.0 --port=${JUPYTER_PORT} --no-browser --notebook-dir=/mlops --allow-root'
-
 
 ########################################################################################################
 # This container runs the postgresql database for airflow.

@@ -2,8 +2,8 @@ import boto3
 import json
 import pandas as pd
  
-region = 'us-west-1'
-deployment_name = 'mlops-deploy-agr'
+region = '' # actualizar
+endpoint_name = '' # actualizar
 
 # Connection
 runtime = boto3.Session().client(
@@ -19,7 +19,7 @@ payload = json.dumps({"inputs": input_data}) # serializamos
 
 # Send data via InvokeEndpoint API
 response = runtime.invoke_endpoint(
-    EndpointName=deployment_name, 
+    EndpointName=endpoint_name, 
     ContentType='application/json', 
     Body=payload)
 

@@ -5,7 +5,7 @@
 test_code.py
 
 # Folders
-data/output_data
+data/output_data/*.csv
 
 # Airflow
 airflow/logs
@@ -172,8 +172,15 @@ fabric.properties
 .DS_Store
 
 py_env/
-./data/output_data
+mlops-aws-env/
 
 notebooks/mlruns
+notebooks/ROCcurve.png
 
-terraform
+src/
+
+terraform/
+
+deployments/deploy_agr.py
+deployments/predict_local.py
+deployments/predict_agr.py

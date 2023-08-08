@@ -30,30 +30,41 @@ Crear y activar ambiente virtual:
 ```commandline
 cd 05-mlops-aws-architecture
 
-python3.10 -m venv py_env
+python3.10 -m venv mlops-aws-env
 source py_env/bin/activate
-
-# Configurar kernel
-ipython kernel install --user --name=mlops-aws
+pip install --upgrade pip
 ```
 
 Instalar las librerias necesarias para el desarrollo del proyecto, que se encuentran detalladas en el archivo `requirements.txt`:
 
 ```commandline
 pip install -r requirements.txt
+
+# Configurar kernel
+ipython kernel install --user --name=mlops-aws-env
 ```
 
-## **Variables de entorno**
+## **Configuración**
 
-Renombrar el archivo `.env_sample` a `.env` y actualizar las siguientes variables:
+Limpiar logs y crear carpeta para poder ejecutar Airflow:
+
+```commandline
+rm -r -f ./airflow/logs
+mkdir -p ./airflow/logs ./airflow/plugins
+```
+
+Renombrar el archivo `.env_sample` a `.env`.
+
+```commandline
+cp .env_sample .env
+. .env
+```
+
+Actualizar las siguientes variables:
    - AWS_ACCESS_KEY_ID
    - AWS_SECRET_ACCESS_KEY
    - AWS_REGION
    - AWS_BUCKET_NAME
-
-```commandline
-cp .env_sample .env
-```
 
 Verificar configuración:
 
@@ -61,12 +72,14 @@ Verificar configuración:
 aws configure
 ```
 
-Generar las políticas y roles para nuestro usuario y poder utilizar los siguientes servicios:
-   - S3: AmazonS3FullAccess
-   - ECR: AmazonEC2ContainerRegistryFullAccess
-   - Sagemaker: AmazonSageMakerFullAccess
+Generar las políticas y roles para el usuario en AWS y poder utilizar los siguientes servicios:
+   - S3: AmazonS3FullAccess.
+   - ECR: AmazonEC2ContainerRegistryFullAccess.
+   - Sagemaker: AmazonSageMakerFullAccess.
 
-Algunos comandos para verificar nuestra configuración y servicios activos:
+Crear bucket en S3 (de acuerdo a nombre considerado en `.env`).
+
+Algunos comandos de AWS Cli para verificar la configuración y servicios activos:
 
 ```commandline
 # Usuarios
@@ -119,9 +132,13 @@ docker-compose up --build -d
 Verificar los servicios creados:
 
 ```commandline
+# Contenedores:
+docker ps
 docker ps -a
 
+# Imágenes:
 docker images
+docker images --filter "reference=mlops-airflow"
 ```
 
 ### Urls
@@ -142,10 +159,12 @@ O detener los contenedores a través de `docker`:
 
 ```commandline
 docker stop $(docker ps -q)
+
+# Eliminar contenedores
 docker rm $(docker ps -aq)
 ```
 
-Finalmente, eliminar todos los `volumes`:
+Finalmente, eliminar los `volume`:
 
 ```commandline
 docker volume rm $(docker volume ls -q)
@@ -153,43 +172,107 @@ docker volume rm $(docker volume ls -q)
 
 ## **Entrenamiento del modelo**
 
-Ejecutar el DAG de Airflow que realiza el proceso de entrenamiento del modelo ML.
+Ejecutar el DAG de Airflow que realiza el proceso de entrenamiento de los modelos ML.
 
-![](images/models.PNG)
+![](images/airflow_1_panel.PNG)
 
 ## **MLflow UI**
 
-Visualizar resultados en interfaz de MLflow:
+Visualizar resultados en interfaz de MLflow.
 
-```ssh
-mlflow ui
-```
+![](images/mlflow_1_panel.PNG)
 
-```commandline
-mlflow ui
-```
+## **Deployment**
 
-![](images/models.PNG)
+### Local
 
-![](images/best_model.PNG)
-
-## **Deploy**
-
-Verificar que el mejor modelo se haya asignado a producción:
-
-![](images/register_model.PNG)
-
-## ****
+- En MLflow y AWS identificar el artefacto en producción y generar las variables necesarias para el despliegue del modelo.
+   - AWS_BUCKET_NAME=""
+   - EXP_ID=""
+   - RUN_ID=""
+   - MODEL_NAME=""
+   - PORT=1234
 
 ```commandline
-
+mlflow models serve --model-uri s3://$AWS_BUCKET_NAME/$EXP_ID/$RUN_ID/artifacts/$MODEL_NAME -p $PORT --no-conda
 ```
 
-## ****
+Abrir una nueva terminal y obtener las predicciones:
 
 ```commandline
-
+cd deployments
+python3 predict_local.py
 ```
+
+### Cloud
+
+- En MLflow y AWS identificar el artefacto en producción y generamos las variables necesarias para el despliegue del modelo.
+
+```commandline
+export MLFLOW_TRACKING_URI=http://localhost:5000
+EXP_ID=""
+RUN_ID=""
+MODEL_NAME=""
+IMAGE_NAME=
+AWS_BUCKET_NAME=""
+```
+
+- Dockerizar el artefacto (en local) apuntando a un artefacto en cloud:
+
+```commandline
+mlflow models build-docker --name $IMAGE_NAME --model-uri s3://$AWS_BUCKET_NAME/$EXP_ID/$RUN_ID/artifacts/$MODEL_NAME --env-manager conda
+```
+
+Verificar la imagen creada:
+
+```commandline
+docker images
+```
+
+- Cargar la imagen de Docker en AWS.
+
+```commandline
+mlflow sagemaker build-and-push-container --no-build -c $IMAGE_NAME
+```
+
+Verificar los servicios creados:
+
+```commandline
+# Imagen
+aws ecr list-images --repository-name NOMBRE_IMAGEN
+```
+
+![](images/ecr_1.png.PNG)
+
+- Realizar el despliegue en SageMaker:
+
+```commandline
+cd deployments
+python3 deploy.py
+```
+
+Verificar los servicios creados:
+
+```commandline
+# Modelo
+aws sagemaker list-models
+
+# Endpoint
+aws sagemaker list-endpoints
+```
+
+![](images/sagemaker_1_model.png.PNG)
+
+![](images/sagemaker_2_endpoint.png.PNG)
+
+- Obtener las predicciones:
+
+```commandline
+cd deployments
+python3 predict.py
+```
+
+![](images/predictions.PNG)
 
 ## **Github**
 

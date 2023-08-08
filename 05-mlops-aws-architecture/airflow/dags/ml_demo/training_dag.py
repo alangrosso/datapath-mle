@@ -44,9 +44,9 @@ _data_files_ = {
     'transformed_y_test_file': os.path.join(PATH_DIR_DATA_OUTPUT + '/y_test.csv'),
 }
 
-model_name = 'prd_logreg_model'
-experiment_name = "prd-churn-prediction-2"
-type_model = 'logistic_regression'
+model_name = 'prd_logreg_model' # prd_logreg_model prd_xgb_model
+experiment_name = "prd-churn-prediction"
+type_model = 'logistic_regression' # logistic_regression XGB
 
 args={
     'owner': 'agr',
